@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SensualGoods — Discreet & Responsible Adult Wellness</title>
+  <meta name="description" content="SensualGoods — tasteful, discreet adult wellness products. 18+ only." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small enhancements beyond Tailwind defaults */
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+    .product-img { aspect-ratio: 1 / 1; object-fit: cover; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <!-- Age gate (simple) -->
+  <div id="ageGate" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+    <div class="max-w-md w-full p-6 glass rounded-2xl text-center">
+      <h2 class="text-2xl font-semibold">Welcome to SensualGoods</h2>
+      <p class="mt-2 text-sm text-gray-700">This site offers adult wellness products. You must be 18+ to enter.</p>
+      <div class="mt-4 flex gap-3 justify-center">
+        <button id="enterBtn" class="px-4 py-2 rounded-md bg-emerald-600 text-white">I am 18 or older</button>
+        <button id="leaveBtn" class="px-4 py-2 rounded-md bg-gray-200">Leave</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold">SG</div>
+        <div>
+          <h1 class="text-lg font-semibold">SensualGoods</h1>
+          <p class="text-xs text-gray-500">Discreet packaging • 18+ • Wellness-first</p>
+        </div>
+      </a>
+      <nav class="flex items-center gap-4">
+        <input id="search" type="search" placeholder="Search products..." class="hidden sm:inline-block border rounded-md px-3 py-2 text-sm" />
+        <button id="cartBtn" class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6h12l-2-6M9 21a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+          <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div class="md:col-span-2">
+        <h2 class="text-3xl font-extrabold">Adult Wellness, Curated Carefully</h2>
+        <p class="mt-3 text-gray-600">High-quality personal massagers, couples' accessories, and wellness products — all selected with discretion and safety in mind. Learn about safe use, cleaning, and material information on every product page.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#catalog" class="px-4 py-2 bg-pink-600 text-white rounded-md">Shop Bestsellers</a>
+          <a href="#guide" class="px-4 py-2 border rounded-md">Wellness Guide</a>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow">
+        <img src="https://via.placeholder.com/400x400?text=Discreet+Packaging" alt="Discreet packaging mockup" class="rounded-md w-full"/>
+        <p class="text-xs text-gray-500 mt-2">All orders shipped in plain, unmarked boxes.</p>
+      </div>
+    </section>
+
+    <!-- Filters & Catalog -->
+    <section id="catalog" class="mt-10">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-semibold">Shop</h3>
+        <div class="flex items-center gap-3">
+          <label class="text-sm text-gray-600">Sort:</label>
+          <select id="sort" class="border rounded-md px-2 py-1 text-sm">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Product Card (repeatable) -->
+        <article class="product-card bg-white rounded-xl p-4 shadow" data-id="1" data-price="49">
+          <img src="https://via.placeholder.com/400?text=Personal+Massager" alt="Personal massager product image" class="product-img rounded-lg w-full"/>
+          <h4 class="mt-3 font-semibold">Personal Massager — Compact</h4>
+          <p class="text-sm text-gray-600">Medical-grade silicone, rechargeable. Quiet motor.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <div class="text-lg font-bold">$49.00</div>
+            <div class="flex gap-2">
+              <button class="addBtn px-3 py-1 rounded-md bg-emerald-600 text-white text-sm">Add</button>
+              <button class="viewBtn px-3 py-1 rounded-md border text-sm">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-xl p-4 shadow" data-id="2" data-price="79">
+          <img src="https://via.placeholder.com/400?text=Couples+Vibe" alt="Couples wearable product image" class="product-img rounded-lg w-full"/>
+          <h4 class="mt-3 font-semibold">Couples Vibe — Adjustable</h4>
+          <p class="text-sm text-gray-600">Designed for comfort during intimacy. Discreet remote included.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <div class="text-lg font-bold">$79.00</div>
+            <div class="flex gap-2">
+              <button class="addBtn px-3 py-1 rounded-md bg-emerald-600 text-white text-sm">Add</button>
+              <button class="viewBtn px-3 py-1 rounded-md border text-sm">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card bg-white rounded-xl p-4 shadow" data-id="3" data-price="29">
+          <img src="https://via.placeholder.com/400?text=Lubricant" alt="Water-based lubricant product image" class="product-img rounded-lg w-full"/>
+          <h4 class="mt-3 font-semibold">Water-Based Lubricant — 100ml</h4>
+          <p class="text-sm text-gray-600">Gentle formula, compatible with silicone toys and condoms.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <div class="text-lg font-bold">$29.00</div>
+            <div class="flex gap-2">
+              <button class="addBtn px-3 py-1 rounded-md bg-emerald-600 text-white text-sm">Add</button>
+              <button class="viewBtn px-3 py-1 rounded-md border text-sm">View</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- more product cards could be added similarly -->
+      </div>
+    </section>
+
+    <!-- Wellness Guide -->
+    <section id="guide" class="mt-12 bg-white rounded-xl p-6 shadow">
+      <h3 class="text-lg font-semibold">Wellness & Safety Guide</h3>
+      <p class="mt-2 text-sm text-gray-700">We prioritize safety: read material specs, follow cleaning instructions, and use compatible lubricants. If you have medical conditions, consult a healthcare professional before use.</p>
+      <ul class="mt-3 text-sm text-gray-600 list-disc pl-5">
+        <li>Clean products before and after each use following the product's instructions.</li>
+        <li>Use water-based lubricants with silicone toys unless otherwise specified.</li>
+        <li>Charge devices using the included cable and avoid water contact when charging.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Cart sidebar (hidden by default) -->
+  <aside id="cart" class="fixed right-0 top-0 h-full w-80 bg-white shadow-lg transform translate-x-full transition-transform z-40">
+    <div class="p-4 flex items-center justify-between border-b">
+      <h4 class="font-semibold">Your Cart</h4>
+      <button id="closeCart" class="text-sm text-gray-500">Close</button>
+    </div>
+    <div id="cartItems" class="p-4 space-y-4 overflow-y-auto" style="max-height: calc(100% - 160px);"></div>
+    <div class="p-4 border-t">
+      <div class="flex items-center justify-between">
+        <div class="font-semibold">Total</div>
+        <div id="cartTotal" class="font-bold">$0.00</div>
+      </div>
+      <button id="checkout" class="mt-4 w-full px-4 py-2 rounded-md bg-pink-600 text-white">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="fixed inset-0 hidden items-center justify-center bg-black/60 z-50">
+    <div class="max-w-2xl w-full bg-white rounded-xl p-6">
+      <button id="closeModal" class="text-sm text-gray-500">Close</button>
+      <div id="modalContent" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-12 bg-white border-t">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <p class="text-sm">© <span id="year"></span> SensualGoods — Discreet shipping. All customers must be 18+.</p>
+      </div>
+      <div class="text-sm text-gray-600">Contact • Terms • Privacy</div>
+    </div>
+  </footer>
+
+  <script>
+    // Basic interactivity (demo only)
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Age gate
+    document.getElementById('enterBtn').addEventListener('click', () => {
+      document.getElementById('ageGate').style.display = 'none';
+    });
+    document.getElementById('leaveBtn').addEventListener('click', () => {
+      window.location.href = 'https://www.google.com';
+    });
+
+    // Cart logic
+    const cart = [];
+    const cartBtn = document.getElementById('cartBtn');
+    const cartSide = document.getElementById('cart');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
+
+    function updateCartUI() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.price;
+        const el = document.createElement('div');
+        el.className = 'flex items-center gap-3';
+        el.innerHTML = `<img src='https://via.placeholder.com/64?text=Img' alt='' class='w-16 h-16 rounded'/> <div class='flex-1'><div class='font-semibold'>${item.title}</div><div class='text-sm text-gray-600'>$${item.price.toFixed(2)}</div></div><button class='removeBtn text-sm text-red-500' data-idx='${idx}'>Remove</button>`;
+        cartItems.appendChild(el);
+      });
+      cartCount.textContent = cart.length;
+      cartTotal.textContent = '$' + total.toFixed(2);
+      cartItems.querySelectorAll('.removeBtn').forEach(btn => btn.addEventListener('click', (e) => {
+        const i = Number(e.target.dataset.idx);
+        cart.splice(i,1);
+        updateCartUI();
+      }));
+    }
+
+    document.querySelectorAll('.addBtn').forEach(btn => btn.addEventListener('click', (e) => {
+      const card = e.target.closest('.product-card');
+      const id = card.dataset.id;
+      const title = card.querySelector('h4').innerText;
+      const price = Number(card.dataset.price);
+      cart.push({ id, title, price });
+      updateCartUI();
+      // briefly show cart
+      cartSide.style.transform = 'translateX(0)';
+    }));
+
+    cartBtn.addEventListener('click', () => { cartSide.style.transform = 'translateX(0)'; });
+    closeCart.addEventListener('click', () => { cartSide.style.transform = 'translateX(100%)'; });
+
+    // Product modal
+    document.querySelectorAll('.viewBtn').forEach(btn => btn.addEventListener('click', (e) => {
+      const card = e.target.closest('.product-card');
+      const title = card.querySelector('h4').innerText;
+      const desc = card.querySelector('p').innerText;
+      const price = card.dataset.price;
+      const img = card.querySelector('img').src;
+      const modal = document.getElementById('productModal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <div>
+          <img src='${img}' alt='${title}' class='w-full rounded-lg' />
+        </div>
+        <div>
+          <h3 class='text-xl font-semibold'>${title}</h3>
+          <p class='mt-2 text-sm text-gray-700'>${desc}</p>
+          <div class='mt-4 font-bold text-lg'>$${Number(price).toFixed(2)}</div>
+          <div class='mt-4 flex gap-2'>
+            <button class='px-4 py-2 rounded-md bg-emerald-600 text-white' id='modalAdd'>Add to cart</button>
+            <button class='px-4 py-2 rounded-md border' id='modalClose'>Close</button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+
+      document.getElementById('modalClose').addEventListener('click', () => modal.classList.add('hidden'));
+      document.getElementById('closeModal').addEventListener('click', () => modal.classList.add('hidden'));
+      document.getElementById('modalAdd').addEventListener('click', () => {
+        cart.push({ id: card.dataset.id, title, price: Number(price) });
+        updateCartUI();
+        modal.classList.add('hidden');
+      });
+    }));
+
+    // Simple checkout demo
+    document.getElementById('checkout').addEventListener('click', () => {
+      if (cart.length === 0) { alert('Your cart is empty'); return; }
+      alert('This is a demo. Implement a secure checkout with payment provider integration.');
+    });
+  </script>
+</body>
+</html>
